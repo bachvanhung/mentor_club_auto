@@ -18,5 +18,13 @@
 
   "REEL_BASE_ID": "",
   "REEL_TABLE_ID": "",
-  "REEL_FB_PAGE_ID": ""
+  "REEL_FB_PAGE_ID": "",
+
+  "YT_CLIENT_ID": "",
+  "YT_CLIENT_SECRET": "",
+  "YT_REFRESH_TOKEN": "",
+  "YT_BASE_ID": "",
+  "TABLE_YOUTUBE": "",
+  "YT_PRIVACY": "public",
+  "YT_CATEGORY_ID": "22"
 }
