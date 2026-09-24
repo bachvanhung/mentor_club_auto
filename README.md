@@ -20,3 +20,8 @@ Fork repo này về, đặt cấu hình của BẠN, rồi đăng bài Facebook 
 | fetch-posts | Lấy bài viết + tương tác | Secrets + Variables |
 | dang-bai | Đăng bài (ảnh→feed / video→Reel) | LARK_APP_SECRET + Variables |
 | dang-reel | Đăng Reel (bảng riêng) | + FB_PAGE_TOKEN |
+
+## Hóa đơn tháng → PDF
+Hằng ngày gửi ảnh hóa đơn (chat với Claude, hoặc tải lên `hoa-don/inbox/`), cuối tháng nhận 1 file PDF tổng hợp.
+- Skill: `.claude/skills/hoa-don-thang/SKILL.md` · Script: `scripts/hoa_don_pdf.py` (`add` / `list` / `build`)
+- Workflow **hoa-don**: tự lưu ảnh từ inbox; 08:00 ngày 1 tự gộp PDF tháng trước.

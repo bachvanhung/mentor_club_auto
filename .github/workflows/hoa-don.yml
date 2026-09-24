@@ -1,0 +1,57 @@
+name: hoa-don
+
+# - Đẩy ảnh vào hoa-don/inbox/ → tự lưu vào thư mục tháng (ngày = hôm nay giờ VN).
+# - Ngày 1 hàng tháng 08:00 giờ VN → gộp hóa đơn tháng trước thành PDF.
+# - Chạy tay (Run workflow) → gộp PDF tháng tùy chọn.
+on:
+  push:
+    paths:
+      - "hoa-don/inbox/**"
+  schedule:
+    - cron: "0 1 1 * *"
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "Tháng cần gộp (YYYY-MM), để trống = tháng này, prev = tháng trước"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Ho_Chi_Minh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow pillow-heif
+      - name: Lưu ảnh từ inbox
+        run: |
+          shopt -s nullglob
+          files=(hoa-don/inbox/*)
+          if [ ${#files[@]} -gt 0 ]; then
+            python3 scripts/hoa_don_pdf.py add "${files[@]}" --move
+          fi
+      - name: Gộp PDF
+        id: build
+        if: github.event_name != 'push'
+        run: |
+          month="${{ github.event.inputs.month }}"
+          [ "${{ github.event_name }}" = "schedule" ] && month=prev
+          python3 scripts/hoa_don_pdf.py build ${month:+--month "$month"} | tee build.log
+          echo "pdf=$(grep -o 'hoa-don/.*\.pdf' build.log)" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        if: steps.build.outputs.pdf
+        with:
+          name: hoa-don-pdf
+          path: ${{ steps.build.outputs.pdf }}
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A hoa-don
+          git diff --cached --quiet || { git commit -m "hoa-don: cập nhật $(date +%F)" && git push; }
