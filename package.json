@@ -1,0 +1,12 @@
+{
+  "name": "mentor-club-auto",
+  "private": true,
+  "description": "Hệ thống marketing tự động: dựng video, đăng bài, AI trả lời bình luận/tin nhắn",
+  "scripts": {
+    "tra-loi": "node scripts/tra-loi-tu-dong.js",
+    "tra-loi:thu": "node scripts/tra-loi-tu-dong.js --dry-run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.3.0"
+  }
+}
