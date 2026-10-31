@@ -2,7 +2,7 @@
 
 - **3 Reel/ngày:** 06:00, 10:30, 20:00 (giờ Việt Nam), do workflow `dang-reel-lich` thực hiện.
 - Mỗi khung giờ chỉ đăng **1** video: dòng có `Lịch đăng` sớm nhất mà đã đến giờ, nếu không có thì lấy dòng `Chờ đăng` tiếp theo theo thứ tự trong bảng.
-- `lich-dang-reel.csv`: 29 bài mô tả chuẩn SEO kèm hashtag, xếp lịch từ 01/11/2026 06:00 đến 10/11/2026 10:30.
+- `lich-dang-reel.csv`: 29 bài mô tả chuẩn SEO kèm hashtag, xếp lịch: bài đầu 20:00 ngày 31/10/2026, sau đó 06:00, 10:30, 20:00 mỗi ngày đến 10/11/2026 06:00.
   Con số 29 = 29 clip không nhạc, bỏ 4 bản không nhạc đã có bản có nhạc, rồi cộng 4 bản có nhạc.
 - Cấu trúc mỗi bài để lên top tìm kiếm Facebook:
   - Dòng đầu là tiêu đề chứa từ khóa chính: nem chua, nem chua ngon, mua nem chua ở đâu, quà biếu đặc sản…
