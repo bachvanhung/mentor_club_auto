@@ -5,6 +5,10 @@ on:
     types: [dang-reel]
   workflow_dispatch:
 
+concurrency:
+  group: dang-reel
+  cancel-in-progress: false
+
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -15,6 +19,7 @@ jobs:
           node-version: 20
       - name: Đăng Reel
         env:
+          TZ: Asia/Ho_Chi_Minh
           LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           LARK_APP_ID: ${{ github.event.client_payload.lark_app_id || vars.LARK_APP_ID }}
@@ -23,4 +28,6 @@ jobs:
           FB_PAGE_ID: ${{ github.event.client_payload.fb_page_id || vars.REEL_FB_PAGE_ID }}
           RESPECT_SCHEDULE: ${{ github.event.client_payload.respect_schedule }}
           REEL_CHUNK_MB: ${{ github.event.client_payload.reel_chunk_mb }}
+          MAX_POSTS: ${{ github.event.client_payload.max_posts }}
+          FB_SCHEDULE: ${{ github.event.client_payload.fb_schedule }}
         run: node scripts/post-reels-api.js ${{ github.event.client_payload.mode }}

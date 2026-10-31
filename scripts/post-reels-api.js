@@ -25,8 +25,16 @@ const CFG = {
   LARK_DOMAIN:   process.env.LARK_DOMAIN     || 'https://open.larksuite.com',
   GRAPH_VERSION: 'v21.0',
   TRIGGER:       process.env.TRIGGER         || 'Chờ đăng',
-  RESPECT_SCHEDULE: process.env.RESPECT_SCHEDULE !== 'false' // dòng "Lịch đăng" tương lai -> bỏ qua
+  RESPECT_SCHEDULE: process.env.RESPECT_SCHEDULE !== 'false', // dòng "Lịch đăng" tương lai -> bỏ qua
+  // Số Reel tối đa mỗi lần chạy (0 = không giới hạn). Workflow chạy theo lịch đặt = 1
+  // để mỗi khung giờ chỉ đăng đúng 1 video, kể cả khi cột "Lịch đăng" để trống.
+  MAX_POSTS:     Math.max(0, parseInt(process.env.MAX_POSTS || '0', 10) || 0),
+  // FB_SCHEDULE=true: dòng có "Lịch đăng" tương lai được tải lên trước và HẸN GIỜ TRÊN FACEBOOK
+  // (video_state=SCHEDULED) -> Facebook tự đăng đúng phút, không phụ thuộc cron GitHub chạy trễ.
+  FB_SCHEDULE:   process.env.FB_SCHEDULE === 'true'
 };
+// Facebook chỉ nhận giờ hẹn cách hiện tại từ 10 phút đến 75 ngày.
+const FB_SCHED_MIN = 10*60*1000, FB_SCHED_MAX = 75*24*3600*1000;
 const GRAPH = `https://graph.facebook.com/${CFG.GRAPH_VERSION}`;
 const DRY = process.argv.includes('--dry-run');
 if (!DRY && (!CFG.APP_SECRET || !CFG.FB_PAGE_TOKEN)) {
@@ -93,13 +101,16 @@ async function uploadResumable(uploadUrl, token, filePath){
     }
   } finally { fs.closeSync(fd); }
 }
-async function postReel(videoPath, caption) {
+async function postReel(videoPath, caption, publishAtMs) {
   const start=await fbFetch(`${GRAPH}/${CFG.FB_PAGE_ID}/video_reels?upload_phase=start&access_token=${encodeURIComponent(CFG.FB_PAGE_TOKEN)}`,{method:'POST'});
   const videoId=start.video_id, uploadUrl=start.upload_url;
   if(!videoId||!uploadUrl)throw new Error('start thiếu video_id/upload_url');
   await uploadResumable(uploadUrl, CFG.FB_PAGE_TOKEN, videoPath);
-  await fbFetch(`${GRAPH}/${CFG.FB_PAGE_ID}/video_reels`,{method:'POST',body:new URLSearchParams({upload_phase:'finish',video_id:videoId,video_state:'PUBLISHED',description:caption||'',access_token:CFG.FB_PAGE_TOKEN})});
+  const finish={upload_phase:'finish',video_id:videoId,video_state:'PUBLISHED',description:caption||'',access_token:CFG.FB_PAGE_TOKEN};
+  if(publishAtMs){ finish.video_state='SCHEDULED'; finish.scheduled_publish_time=String(Math.floor(publishAtMs/1000)); }
+  await fbFetch(`${GRAPH}/${CFG.FB_PAGE_ID}/video_reels`,{method:'POST',body:new URLSearchParams(finish)});
   let permalink='';
+  if(publishAtMs) return {videoId,permalink};   // hẹn giờ: Facebook tự đăng, không cần chờ xử lý
   for(let i=0;i<30;i++){ await new Promise(r=>setTimeout(r,6000));
     try{ const st=await fbFetch(`${GRAPH}/${videoId}?fields=status,permalink_url&access_token=${encodeURIComponent(CFG.FB_PAGE_TOKEN)}`,{method:'GET'});
       const phase=st.status&&(st.status.video_status||(st.status.processing_phase&&st.status.processing_phase.status));
@@ -127,21 +138,34 @@ function scheduleMs(cell){ const t=plain(cell).trim(); if(!t)return null;
 (async()=>{
   const tk=await larkToken();
   const rows=await listAll(tk);
-  const targets=rows.filter(r=>selName(r.fields[F.trigger])===CFG.TRIGGER);
-  log(`Tìm thấy ${targets.length} dòng "${CFG.TRIGGER}" (tổng ${rows.length}).`);
-  let ok=0,err=0,wait=0; const nowMs=Date.now();
+  // Thứ tự đăng: dòng có "Lịch đăng" sớm nhất trước, dòng không có lịch theo thứ tự trong bảng.
+  const targets=rows.map((r,i)=>({r,i,s:scheduleMs(r.fields[F.schedule])}))
+    .filter(x=>selName(x.r.fields[F.trigger])===CFG.TRIGGER)
+    .sort((a,b)=>(a.s??Infinity)-(b.s??Infinity)||a.i-b.i).map(x=>x.r);
+  log(`Tìm thấy ${targets.length} dòng "${CFG.TRIGGER}" (tổng ${rows.length}).`+(CFG.MAX_POSTS?` Giới hạn ${CFG.MAX_POSTS} Reel/lần.`:''));
+  let ok=0,err=0,wait=0,tried=0,sched=0; const nowMs=Date.now();
   for(const row of targets){
     const recId=row.record_id;
-    if(CFG.RESPECT_SCHEDULE){ const s=scheduleMs(row.fields[F.schedule]); if(s&&s>nowMs){ log(`  [CHỜ GIỜ] ${recId}: hẹn ${plain(row.fields[F.schedule])}`); wait++; continue; } }
+    let publishAt=null;
+    if(CFG.RESPECT_SCHEDULE){ const s=scheduleMs(row.fields[F.schedule]);
+      if(s&&s>nowMs){
+        if(CFG.FB_SCHEDULE && s-nowMs>=FB_SCHED_MIN && s-nowMs<=FB_SCHED_MAX) publishAt=s;
+        else { log(`  [CHỜ GIỜ] ${recId}: hẹn ${plain(row.fields[F.schedule])}`+(CFG.FB_SCHEDULE?' (ngoài khoảng 10 phút - 75 ngày, để lần chạy sau)':'')); wait++; continue; }
+      } }
+    if(!publishAt && CFG.MAX_POSTS && tried>=CFG.MAX_POSTS){ log(`  [ĐỂ SAU] ${recId}: đã đủ ${CFG.MAX_POSTS} Reel đăng ngay cho lần chạy này.`); continue; }
     const media=row.fields[F.media]; const att=Array.isArray(media)?(media.find(a=>/\.(mp4|mov|m4v|webm)$/i.test(a.name||''))||media[0]):null;
     const caption=[plain(row.fields[F.caption]),plain(row.fields[F.hashtag])].filter(Boolean).join('\n\n');
     if(!att||!att.file_token){ log(`  [BỎ QUA] ${recId}: không có file.`); if(!DRY)await updateRow(tk,recId,{[F.trigger]:'Lỗi',[F.log]:`${now()} - không có file`}); err++; continue; }
     log(`  >> ${recId}: ${(att.name||'').slice(0,40)} (${Math.round((att.size||0)/1048576*10)/10}MB)`);
-    if(DRY){ log(`     [DRY] caption: ${caption.slice(0,60).replace(/\n/g,' ')}`);
+    if(DRY){ if(publishAt)log(`     [DRY] sẽ HẸN GIỜ trên Facebook: ${plain(row.fields[F.schedule])}`);
+      log(`     [DRY] caption: ${caption.slice(0,60).replace(/\n/g,' ')}`);
       const c=plain(row.fields[F.comment]).trim(); if(c)log(`     [DRY] comment #1: ${c.slice(0,80).replace(/\n/g,' ')}`); continue; }
-    const vp=path.join(os.tmpdir(),'reel_'+recId+'.mp4');
+    const vp=path.join(os.tmpdir(),'reel_'+recId+'.mp4'); if(!publishAt)tried++;
     try{ await downloadVideo(tk,att.file_token,vp);
-      const {videoId,permalink}=await postReel(vp,caption);
+      const {videoId,permalink}=await postReel(vp,caption,publishAt);
+      if(publishAt){ const at=plain(row.fields[F.schedule]);
+        await updateRow(tk,recId,{[F.trigger]:'Đã hẹn giờ',[F.log]:`${now()} - HẸN GIỜ FB ${at} - video_id ${videoId}`});
+        log(`     ⏰ ĐÃ HẸN GIỜ trên Facebook: ${at} (video_id ${videoId})`); sched++; continue; }
       // [2] Auto comment #1: link ebook. Chỉ chạy nếu cột "Comment ebook" có nội dung. Lỗi comment KHÔNG làm hỏng bài đã đăng.
       let cmtNote=''; const commentText=plain(row.fields[F.comment]).trim();
       if(commentText){ try{ await postComment(videoId,commentText); cmtNote=' +cmt'; }catch(e){ cmtNote=' (cmt lỗi: '+String(e.message||e).slice(0,80)+')'; log(`     ! comment lỗi: ${String(e.message||e).slice(0,120)}`); } }
@@ -151,5 +175,5 @@ function scheduleMs(cell){ const t=plain(cell).trim(); if(!t)return null;
       try{await updateRow(tk,recId,{[F.trigger]:'Lỗi',[F.log]:`${now()} - ${msg}`});}catch{} err++;
     }finally{ try{fs.unlinkSync(vp)}catch{} }
   }
-  log(`Xong. Đăng: ${ok}, Lỗi: ${err}, Chờ giờ: ${wait}.`);
+  log(`Xong. Đăng: ${ok}, Hẹn giờ FB: ${sched}, Lỗi: ${err}, Chờ giờ: ${wait}.`);
 })().catch(e=>{console.error('FATAL',e);process.exit(1);});
