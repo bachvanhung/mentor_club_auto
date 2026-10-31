@@ -1,11 +1,15 @@
 name: dang-reel-lich
 
-# Đăng Reel tự động theo lịch: mỗi ngày 3 video, mỗi khung giờ đúng 1 video.
+# Đăng Reel tự động: mỗi ngày 3 video lúc 06:00, 10:30, 20:00 giờ VN.
+# Dòng có "Lịch đăng" -> tải lên trước và HẸN GIỜ TRÊN FACEBOOK, Facebook tự đăng ĐÚNG PHÚT.
+# Mỗi lần chạy sẽ hẹn giờ mọi dòng "Chờ đăng" sắp tới (từ 10 phút đến 75 ngày nữa).
+# Dòng không có "Lịch đăng" -> đăng ngay, mỗi lần chạy tối đa 1 video.
+# Muốn hẹn giờ ngay sau khi gắn clip: tab Actions -> dang-reel-lich -> Run workflow.
 # Giờ Việt Nam (UTC+7) -> cron của GitHub tính theo UTC:
 #   06:00 VN = 23:00 UTC (ngày hôm trước)
 #   10:30 VN = 03:30 UTC
 #   20:00 VN = 13:00 UTC
-# GitHub có thể chạy trễ vài phút đến vài chục phút so với giờ hẹn.
+# GitHub có thể chạy trễ, nhưng giờ đăng thật do Facebook giữ nên không bị lệch.
 on:
   schedule:
     - cron: '0 23 * * *'
@@ -27,7 +31,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Đăng 1 Reel tiếp theo trong hàng chờ
+      - name: Hẹn giờ Reel trên Facebook + đăng Reel đến hạn
         env:
           TZ: Asia/Ho_Chi_Minh
           LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
@@ -37,4 +41,5 @@ jobs:
           LARK_TABLE_ID: ${{ vars.REEL_TABLE_ID }}
           FB_PAGE_ID: ${{ vars.REEL_FB_PAGE_ID }}
           MAX_POSTS: '1'
+          FB_SCHEDULE: 'true'
         run: node scripts/post-reels-api.js
