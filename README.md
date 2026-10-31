@@ -20,3 +20,4 @@ Fork repo này về, đặt cấu hình của BẠN, rồi đăng bài Facebook 
 | fetch-posts | Lấy bài viết + tương tác | Secrets + Variables |
 | dang-bai | Đăng bài (ảnh→feed / video→Reel) | LARK_APP_SECRET + Variables |
 | dang-reel | Đăng Reel (bảng riêng) | + FB_PAGE_TOKEN |
+| dang-reel-lich (tự chạy) | Đăng 1 Reel lúc 06:00, 10:30, 20:00 giờ VN | Variables `REEL_TABLE_ID`, `REEL_FB_PAGE_ID` |

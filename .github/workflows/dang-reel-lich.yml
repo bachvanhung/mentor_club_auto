@@ -1,0 +1,40 @@
+name: dang-reel-lich
+
+# Đăng Reel tự động theo lịch: mỗi ngày 3 video, mỗi khung giờ đúng 1 video.
+# Giờ Việt Nam (UTC+7) -> cron của GitHub tính theo UTC:
+#   06:00 VN = 23:00 UTC (ngày hôm trước)
+#   10:30 VN = 03:30 UTC
+#   20:00 VN = 13:00 UTC
+# GitHub có thể chạy trễ vài phút đến vài chục phút so với giờ hẹn.
+on:
+  schedule:
+    - cron: '0 23 * * *'
+    - cron: '30 3 * * *'
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: dang-reel
+  cancel-in-progress: false
+
+jobs:
+  run:
+    # Chưa đặt bảng Reel (vd repo vừa fork) -> bỏ qua, không báo lỗi.
+    if: ${{ vars.REEL_TABLE_ID != '' && vars.REEL_FB_PAGE_ID != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Đăng 1 Reel tiếp theo trong hàng chờ
+        env:
+          TZ: Asia/Ho_Chi_Minh
+          LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          LARK_APP_ID: ${{ vars.LARK_APP_ID }}
+          LARK_APP_TOKEN: ${{ vars.REEL_BASE_ID || vars.LARK_BASE_ID }}
+          LARK_TABLE_ID: ${{ vars.REEL_TABLE_ID }}
+          FB_PAGE_ID: ${{ vars.REEL_FB_PAGE_ID }}
+          MAX_POSTS: '1'
+        run: node scripts/post-reels-api.js
