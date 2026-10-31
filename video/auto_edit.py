@@ -70,14 +70,19 @@ def thu_muc_ra(ten):
 
 
 # ---------- BƯỚC 1 ----------
-def chuan_hoa_va_ghep(clips, ra, c):
-    """Đưa từng clip về 9:16 (crop giữa nếu quay ngang), cùng fps, cùng audio, rồi ghép."""
+def chuan_hoa_va_ghep(clips, ra, c, ngang=False):
+    """Đưa từng clip về 9:16 (crop giữa nếu quay ngang), cùng fps, cùng audio, rồi ghép.
+    ngang=True: khung 16:9 cho bài giảng quay màn hình -> thu nhỏ + viền đen, KHÔNG crop mất chữ."""
     W, H, fps = c["rong"], c["cao"], c["fps"]
+    if ngang:
+        W, H = H, W
     tam = ra / "tam"; tam.mkdir(exist_ok=True)
     ds = []
     for i, f in enumerate(clips):
         o = tam / f"{i:03d}.mp4"
-        vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1"
+        vf = (f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,fps={fps},setsar=1"
+              if ngang else
+              f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={fps},setsar=1")
         cmd = ["ffmpeg", "-y", "-v", "error", "-i", f]
         if not co_am_thanh(f):  # clip không tiếng -> thêm tiếng câm để ghép không lỗi
             cmd += ["-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-shortest"]
@@ -173,8 +178,8 @@ def chuan_bi(args, c):
     if not clips:
         sys.exit(f"!! Không thấy clip video trong {src}")
     ra = thu_muc_ra(args.ten)
-    print(f"[1/3] ghép {len(clips)} clip -> 9:16")
-    ghep = chuan_hoa_va_ghep(clips, ra, c)
+    print(f"[1/3] ghép {len(clips)} clip -> {'16:9' if args.ngang else '9:16'}")
+    ghep = chuan_hoa_va_ghep(clips, ra, c, args.ngang)
     print("[2/3] cắt khoảng lặng")
     da_cat = cat_lang(ghep, ra, c) if not args.khong_cat else ghep
     print("[3/3] phụ đề")
@@ -198,12 +203,16 @@ def xuat(args, c):
     if not vao.exists():
         sys.exit("!! Chưa chạy bước chuan-bi cho video này")
     dur = thoi_luong(vao)
+    wh = chay(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=width,height",
+               "-of", "csv=p=0", vao]).strip().split(",")
+    ngang = int(wh[0]) > int(wh[1])
 
     vf = []
     srt = ra / "phu-de.srt"
     if srt.exists() and not args.khong_phu_de:
-        style = (f"FontName={c['font']},FontSize={c['co_chu_phu_de']},Bold=1,PrimaryColour=&H00FFFFFF,"
-                 "OutlineColour=&H00000000,BorderStyle=1,Outline=2,Shadow=0,Alignment=2,MarginV=70")
+        co, le = (c["co_chu_phu_de"] * 0.7, 18) if ngang else (c["co_chu_phu_de"], 70)
+        style = (f"FontName={c['font']},FontSize={co:g},Bold=1,PrimaryColour=&H00FFFFFF,"
+                 f"OutlineColour=&H00000000,BorderStyle=1,Outline=2,Shadow=0,Alignment=2,MarginV={le}")
         vf.append(f"subtitles='{esc_duong_dan(srt)}':force_style='{style}'")
     if args.tieu_de:
         font_file = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
@@ -216,7 +225,7 @@ def xuat(args, c):
     vchain = ",".join(vf) if vf else "null"
 
     nhac = Path(args.nhac) if args.nhac else None
-    if not nhac:
+    if not nhac and not args.khong_nhac:
         kho = sorted((GOC / "video" / "nhac").glob("*.mp3"))
         nhac = random.choice(kho) if kho else None
 
@@ -243,15 +252,17 @@ def xuat(args, c):
 
 
 def main():
-    p = argparse.ArgumentParser(description="Tự dựng video dọc 9:16")
+    p = argparse.ArgumentParser(description="Tự dựng video dọc 9:16 / ngang 16:9")
     sub = p.add_subparsers(dest="buoc", required=True)
     a = sub.add_parser("chuan-bi", help="ghép + cắt lặng + phụ đề")
     a.add_argument("thu_muc"); a.add_argument("--ten", required=True)
     a.add_argument("--khong-cat", action="store_true", help="không cắt khoảng lặng")
+    a.add_argument("--ngang", action="store_true", help="khung ngang 16:9 (bài giảng quay màn hình)")
     b = sub.add_parser("xuat", help="phụ đề + tiêu đề + nhạc -> final.mp4")
     b.add_argument("--ten", required=True); b.add_argument("--nhac")
     b.add_argument("--tieu-de", help="chữ hook hiện 3 giây đầu")
     b.add_argument("--khong-phu-de", action="store_true")
+    b.add_argument("--khong-nhac", action="store_true", help="không chèn nhạc nền (bài giảng)")
     args = p.parse_args()
     c = cau_hinh()
     (chuan_bi if args.buoc == "chuan-bi" else xuat)(args, c)

@@ -24,6 +24,7 @@ quay video thô ~30 phút/ngày, duyệt bản dựng, duyệt nội dung. Mọi
 | `tri-thuc/` | Kiến thức bán hàng — AI trả lời khách dựa vào đây |
 | `obsidian-vault/` | Bộ não thứ 2: ý tưởng, kịch bản, bài đăng, khách hàng, khóa học |
 | `docs/` | Kế hoạch tổng, quảng cáo, giáo trình khóa học, hướng dẫn cài đặt |
+| `obsidian-vault/60-Khoa-hoc/` | Kịch bản quay từng bài, kế hoạch đóng gói, trang bán hàng |
 
 ## Lệnh tắt (gõ trong Claude Code)
 - `/y-tuong <chủ đề>` — 10 ý tưởng video + hook, lưu vào Obsidian
@@ -31,6 +32,7 @@ quay video thô ~30 phút/ngày, duyệt bản dựng, duyệt nội dung. Mọi
 - `/dung-video <thư mục clip>` — tự dựng video từ thẻ nhớ
 - `/viet-bai <ten-video>` — caption + hashtag + bài SEO từ video đã dựng
 - `/len-lich` — xếp lịch đăng tuần
+- `/bai-giang <thư mục quay> <M#-#-ten>` — dựng bài giảng khóa học (16:9, không nhạc)
 
 ## Quy trình 1 ngày (chuẩn)
 1. Sáng: chủ quay 3-5 video theo kịch bản trong `obsidian-vault/20-Kich-ban/`.
@@ -43,5 +45,7 @@ quay video thô ~30 phút/ngày, duyệt bản dựng, duyệt nội dung. Mọi
 ```bash
 python3 video/auto_edit.py chuan-bi <thư-mục-clip> --ten <ten>
 python3 video/auto_edit.py xuat --ten <ten> --tieu-de "HOOK" [--nhac video/nhac/x.mp3]
+python3 video/auto_edit.py chuan-bi <thư-mục> --ten <ten> --ngang   # bài giảng 16:9
+python3 video/auto_edit.py xuat --ten <ten> --khong-nhac
 npm run tra-loi:thu        # xem thử AI sẽ trả lời gì (không gửi)
 ```

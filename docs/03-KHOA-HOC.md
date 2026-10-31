@@ -2,7 +2,8 @@
 
 > Mỗi dòng trong bảng là **1 video cần quay**. Mỗi bài dài 5–15 phút, quay màn hình bằng OBS và lồng mặt bạn ở góc.
 > Gợi ý cách làm: mở Claude Code, gõ `/kich-ban Bài 2.3 - Cài CLAUDE.md` để AI viết dàn ý cho từng bài.
-> Đánh dấu ✅ khi quay xong. Ghi chú từng bài trong `obsidian-vault/60-Khoa-hoc/`.
+> **Kịch bản quay chi tiết từng bài + lịch quay 10 buổi + trang bán hàng:** `obsidian-vault/60-Khoa-hoc/` (bắt đầu từ `00-KE-HOACH-DONG-GOI.md`).
+> Dựng bài giảng: `/bai-giang <thư mục quay> <M#-#-ten>`.
 
 ## Module 0 — Khởi động (miễn phí, dùng làm buổi học thử)
 | # | Bài | Học viên làm được |
