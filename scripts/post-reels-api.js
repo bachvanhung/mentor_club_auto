@@ -135,9 +135,33 @@ function scheduleMs(cell){ const t=plain(cell).trim(); if(!t)return null;
   const m=t.match(/(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/); if(m)return new Date(+m[1],+m[2]-1,+m[3],+m[4],+m[5]).getTime();
   const d=new Date(t); return isNaN(d)?null:d.getTime(); }
 
+// Reel đã HẸN GIỜ trên Facebook mà tới giờ đăng rồi: đăng bình luận đầu (cột "Comment ebook")
+// rồi chuyển dòng sang "Đã đăng". Facebook không cho bình luận trước khi bài lên.
+async function finishScheduled(tk, rows){
+  const nowMs=Date.now(); let n=0;
+  for(const row of rows){
+    if(selName(row.fields[F.trigger])!=='Đã hẹn giờ') continue;
+    const s=scheduleMs(row.fields[F.schedule]); if(!s||s>nowMs) continue;
+    const recId=row.record_id, oldLog=plain(row.fields[F.log]);
+    const m=oldLog.match(/video_id (\d+)/); if(!m){ log(`  [HẸN GIỜ] ${recId}: thiếu video_id trong log, bỏ qua.`); continue; }
+    const videoId=m[1], commentText=plain(row.fields[F.comment]).trim();
+    if(DRY){ log(`  [DRY] ${recId}: đã tới giờ, sẽ bình luận: ${commentText.slice(0,60)}`); continue; }
+    let permalink='', note='';
+    try{ const st=await fbFetch(`${GRAPH}/${videoId}?fields=permalink_url,published&access_token=${encodeURIComponent(CFG.FB_PAGE_TOKEN)}`,{method:'GET'});
+      if(st.published===false){ log(`  [HẸN GIỜ] ${recId}: Facebook chưa đăng xong, để lần sau.`); continue; }
+      permalink=st.permalink_url||''; if(permalink.startsWith('/'))permalink='https://www.facebook.com'+permalink;
+    }catch(e){ log(`  ! ${recId}: không đọc được trạng thái video: ${String(e.message||e).slice(0,120)}`); }
+    if(commentText){ try{ await postComment(videoId,commentText); note=' +cmt'; }catch(e){ note=' (cmt lỗi: '+String(e.message||e).slice(0,80)+')'; } }
+    await updateRow(tk,recId,{[F.trigger]:'Đã đăng',[F.link]:permalink,[F.log]:`${oldLog}\n${now()} - ĐÃ LÊN${note}`});
+    log(`  ✔ ${recId}: Reel hẹn giờ đã lên${note} ${permalink}`); n++;
+  }
+  if(n) log(`Đã hoàn tất ${n} Reel hẹn giờ (bình luận + link).`);
+}
+
 (async()=>{
   const tk=await larkToken();
   const rows=await listAll(tk);
+  await finishScheduled(tk, rows);
   // Thứ tự đăng: dòng có "Lịch đăng" sớm nhất trước, dòng không có lịch theo thứ tự trong bảng.
   const targets=rows.map((r,i)=>({r,i,s:scheduleMs(r.fields[F.schedule])}))
     .filter(x=>selName(x.r.fields[F.trigger])===CFG.TRIGGER)
@@ -165,7 +189,7 @@ function scheduleMs(cell){ const t=plain(cell).trim(); if(!t)return null;
       const {videoId,permalink}=await postReel(vp,caption,publishAt);
       if(publishAt){ const at=plain(row.fields[F.schedule]);
         await updateRow(tk,recId,{[F.trigger]:'Đã hẹn giờ',[F.log]:`${now()} - HẸN GIỜ FB ${at} - video_id ${videoId}`});
-        log(`     ⏰ ĐÃ HẸN GIỜ trên Facebook: ${at} (video_id ${videoId})`); sched++; continue; }
+        log(`     ⏰ ĐÃ HẸN GIỜ trên Facebook: ${at} (video_id ${videoId}); bình luận sẽ đăng sau khi Reel lên.`); sched++; continue; }
       // [2] Auto comment #1: link ebook. Chỉ chạy nếu cột "Comment ebook" có nội dung. Lỗi comment KHÔNG làm hỏng bài đã đăng.
       let cmtNote=''; const commentText=plain(row.fields[F.comment]).trim();
       if(commentText){ try{ await postComment(videoId,commentText); cmtNote=' +cmt'; }catch(e){ cmtNote=' (cmt lỗi: '+String(e.message||e).slice(0,80)+')'; log(`     ! comment lỗi: ${String(e.message||e).slice(0,120)}`); } }
