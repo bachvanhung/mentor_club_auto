@@ -41,7 +41,7 @@ if (!DRY && (!CFG.APP_SECRET || !CFG.FB_PAGE_TOKEN)) {
   console.error('!! Thiếu LARK_APP_SECRET hoặc FB_PAGE_TOKEN — đặt qua biến môi trường (GitHub Secrets).');
   process.exit(1);
 }
-const F = { trigger:'TT Reel', media:'Ảnh/video', caption:'Nội dung', hashtag:'Hastag', link:'Link Reel', log:'Log đăng Reel', schedule:'Lịch đăng', comment:'Comment ebook' };
+const F = { trigger:'TT Reel', media:'Ảnh/video', caption:'Nội dung', hashtag:'Hastag', link:'Link Reel', log:'Log đăng Reel', schedule:'Lịch đăng', comment:'Comment ebook', title:'Tiêu đề', playlist:'Playlist' };
 const now = () => new Date().toISOString().replace('T',' ').slice(0,19);
 const log = (...a) => console.log(now(), ...a);
 const plain = v => v==null?'':typeof v==='string'?v:Array.isArray(v)?v.map(x=>x.text||x.name||'').join(''):(v.text||v.name||String(v));
@@ -126,6 +126,17 @@ async function postReel(videoPath, caption, publishAtMs) {
 async function postComment(objectId, message) {
   return fbFetch(`${GRAPH}/${objectId}/comments`, { method:'POST', body:new URLSearchParams({ message, access_token:CFG.FB_PAGE_TOKEN }) });
 }
+// "Thẻ" kiểu YouTube: bình luận đầu kèm link 1 Reel đã đăng CÙNG PLAYLIST (bài lên gần nhất),
+// để người xem bấm sang xem tiếp. Không có cột Playlist / chưa có Reel nào thì giữ nguyên bình luận.
+function withRelated(rows, row, text){
+  const pl=plain(row.fields[F.playlist]).trim(); if(!pl) return text;
+  const rel=rows.filter(r=>r.record_id!==row.record_id && plain(r.fields[F.playlist]).trim()===pl
+      && selName(r.fields[F.trigger])==='Đã đăng' && /^https?:/.test(plain(r.fields[F.link]).trim()))
+    .sort((a,b)=>(scheduleMs(b.fields[F.schedule])||0)-(scheduleMs(a.fields[F.schedule])||0))[0];
+  if(!rel) return text;
+  const t=plain(rel.fields[F.title]).trim();
+  return [text, `👉 Xem thêm${t?': '+t:''}\n${plain(rel.fields[F.link]).trim()}`].filter(Boolean).join('\n\n');
+}
 async function updateRow(tk, recId, fields) {
   const r=await fetch(`${CFG.LARK_DOMAIN}/open-apis/bitable/v1/apps/${CFG.APP_TOKEN}/tables/${CFG.TABLE_ID}/records/${recId}`,
     {method:'PUT',headers:{'Content-Type':'application/json; charset=utf-8',Authorization:'Bearer '+tk},body:JSON.stringify({fields})});
@@ -144,7 +155,7 @@ async function finishScheduled(tk, rows){
     const s=scheduleMs(row.fields[F.schedule]); if(!s||s>nowMs) continue;
     const recId=row.record_id, oldLog=plain(row.fields[F.log]);
     const m=oldLog.match(/video_id (\d+)/); if(!m){ log(`  [HẸN GIỜ] ${recId}: thiếu video_id trong log, bỏ qua.`); continue; }
-    const videoId=m[1], commentText=plain(row.fields[F.comment]).trim();
+    const videoId=m[1], commentText=withRelated(rows,row,plain(row.fields[F.comment]).trim());
     if(DRY){ log(`  [DRY] ${recId}: đã tới giờ, sẽ bình luận: ${commentText.slice(0,60)}`); continue; }
     let permalink='', note='';
     try{ const st=await fbFetch(`${GRAPH}/${videoId}?fields=permalink_url,published&access_token=${encodeURIComponent(CFG.FB_PAGE_TOKEN)}`,{method:'GET'});
@@ -153,6 +164,7 @@ async function finishScheduled(tk, rows){
     }catch(e){ log(`  ! ${recId}: không đọc được trạng thái video: ${String(e.message||e).slice(0,120)}`); }
     if(commentText){ try{ await postComment(videoId,commentText); note=' +cmt'; }catch(e){ note=' (cmt lỗi: '+String(e.message||e).slice(0,80)+')'; } }
     await updateRow(tk,recId,{[F.trigger]:'Đã đăng',[F.link]:permalink,[F.log]:`${oldLog}\n${now()} - ĐÃ LÊN${note}`});
+    row.fields[F.trigger]='Đã đăng'; row.fields[F.link]=permalink;   // để Reel sau trong lần chạy này gắn link được
     log(`  ✔ ${recId}: Reel hẹn giờ đã lên${note} ${permalink}`); n++;
   }
   if(n) log(`Đã hoàn tất ${n} Reel hẹn giờ (bình luận + link).`);
@@ -178,12 +190,12 @@ async function finishScheduled(tk, rows){
       } }
     if(!publishAt && CFG.MAX_POSTS && tried>=CFG.MAX_POSTS){ log(`  [ĐỂ SAU] ${recId}: đã đủ ${CFG.MAX_POSTS} Reel đăng ngay cho lần chạy này.`); continue; }
     const media=row.fields[F.media]; const att=Array.isArray(media)?(media.find(a=>/\.(mp4|mov|m4v|webm)$/i.test(a.name||''))||media[0]):null;
-    const caption=[plain(row.fields[F.caption]),plain(row.fields[F.hashtag])].filter(Boolean).join('\n\n');
+    const caption=[plain(row.fields[F.title]),plain(row.fields[F.caption]),plain(row.fields[F.hashtag])].filter(Boolean).join('\n\n');
     if(!att||!att.file_token){ log(`  [BỎ QUA] ${recId}: không có file.`); if(!DRY)await updateRow(tk,recId,{[F.trigger]:'Lỗi',[F.log]:`${now()} - không có file`}); err++; continue; }
     log(`  >> ${recId}: ${(att.name||'').slice(0,40)} (${Math.round((att.size||0)/1048576*10)/10}MB)`);
     if(DRY){ if(publishAt)log(`     [DRY] sẽ HẸN GIỜ trên Facebook: ${plain(row.fields[F.schedule])}`);
       log(`     [DRY] caption: ${caption.slice(0,60).replace(/\n/g,' ')}`);
-      const c=plain(row.fields[F.comment]).trim(); if(c)log(`     [DRY] comment #1: ${c.slice(0,80).replace(/\n/g,' ')}`); continue; }
+      const c=withRelated(rows,row,plain(row.fields[F.comment]).trim()); if(c)log(`     [DRY] comment #1: ${c.slice(0,80).replace(/\n/g,' ')}`); continue; }
     const vp=path.join(os.tmpdir(),'reel_'+recId+'.mp4'); if(!publishAt)tried++;
     try{ await downloadVideo(tk,att.file_token,vp);
       const {videoId,permalink}=await postReel(vp,caption,publishAt);
@@ -191,7 +203,7 @@ async function finishScheduled(tk, rows){
         await updateRow(tk,recId,{[F.trigger]:'Đã hẹn giờ',[F.log]:`${now()} - HẸN GIỜ FB ${at} - video_id ${videoId}`});
         log(`     ⏰ ĐÃ HẸN GIỜ trên Facebook: ${at} (video_id ${videoId}); bình luận sẽ đăng sau khi Reel lên.`); sched++; continue; }
       // [2] Auto comment #1: link ebook. Chỉ chạy nếu cột "Comment ebook" có nội dung. Lỗi comment KHÔNG làm hỏng bài đã đăng.
-      let cmtNote=''; const commentText=plain(row.fields[F.comment]).trim();
+      let cmtNote=''; const commentText=withRelated(rows,row,plain(row.fields[F.comment]).trim());
       if(commentText){ try{ await postComment(videoId,commentText); cmtNote=' +cmt'; }catch(e){ cmtNote=' (cmt lỗi: '+String(e.message||e).slice(0,80)+')'; log(`     ! comment lỗi: ${String(e.message||e).slice(0,120)}`); } }
       await updateRow(tk,recId,{[F.trigger]:'Đã đăng',[F.link]:permalink||'',[F.log]:`${now()} - OK - video_id ${videoId}${cmtNote}`});
       log(`     ✔ ĐÃ ĐĂNG: ${permalink||'(đang xử lý)'}`); ok++;
