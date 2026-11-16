@@ -7,19 +7,22 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 |---|---|
 | Mục tiêu | Lượt tương tác |
 | Ngân sách | **700.000 đ trọn đời cho 7 ngày** (khoảng 100.000 đ/ngày). Meta cộng thêm 10% VAT, nên thực trả khoảng **770.000 đ** |
-| Thời gian | 7 ngày, từ [NGÀY BẮT ĐẦU QC] 00:00 đến đúng 7 ngày sau |
+| Thời gian | **Bắt đầu 00:02 ngày 17/11/2026**, kết thúc **23:59 ngày 23/11/2026** (7 ngày). Theo quy tắc của anh: quảng cáo luôn bắt đầu lúc 00:02. Múi giờ tài khoản phải là giờ Việt Nam (GMT+7) |
 | Khu vực | Ghim tại [ĐỊA CHỈ CỬA HÀNG], **bán kính 20 km** (vùng tròn rộng khoảng 1.250 km²) |
-| Đối tượng | Tất cả: nam nữ, 18 đến 65+, không chọn sở thích. **Ưu tiên người Mường** bằng vị trí ghim và nội dung video (Meta không cho chọn theo dân tộc, xem mục 2b) |
+| Đối tượng | Tất cả: nam nữ, 18 đến 65+, không chọn sở thích. **Hướng tới người Mường** bằng vị trí ghim và nội dung video (Meta không cho chọn theo dân tộc, xem mục 2b) |
+| Video | **Tất cả video đang có trong mục Reels của Trang** (dùng bài viết có sẵn), mỗi video là 1 quảng cáo, cùng 1 nhóm |
 | Tài khoản | Tài khoản quảng cáo trong nick Hưng (Chrome đã đăng nhập sẵn) |
+| Thanh toán | **Tiền đã nạp qua MoMo** (số dư trả trước trong tài khoản quảng cáo). Số dư cần **ít nhất 770.000 đ** (700.000 đ + 10% VAT). Hết số dư thì quảng cáo tự dừng |
 
 > **"20 km vuông" hay "bán kính 20 km"?** Meta chỉ khoanh vùng bằng ghim và **bán kính**. Kế hoạch này dùng bán kính 20 km, như anh nói lúc đầu. Nếu anh muốn một khu vực chỉ rộng 20 km², tức vùng tròn bán kính khoảng **2,5 km**, thì nhập bán kính 2,5 km. Vùng hẹp như vậy chỉ có ít người, nên 700.000 đ sẽ khiến mỗi người thấy quảng cáo lặp lại nhiều lần.
 
-> **5 việc phải làm xong trước khi chạy**
+> **6 việc phải làm xong trước khi chạy**
 > 1. **Cho nick Hưng quyền quảng cáo trên Trang Mế Nguyệt.** Đăng nhập nick quản trị Trang, vào **Cài đặt → Quyền truy cập Trang → Thêm mới**, thêm nick Hưng với quyền làm **Quảng cáo** (hoặc toàn quyền). Nếu Trang nằm trong Business Manager thì gán Trang cho nick Hưng ở đó. Thiếu bước này, Ads Manager của nick Hưng không chọn được Trang Mế Nguyệt và không dùng được video có sẵn.
-> 2. **Phải có video đã đăng trên Trang.** Hệ thống đăng tự động (`dang-reel-lich`) **chưa đăng bài nào**, vì repo còn thiếu biến `REEL_TABLE_ID` và `REEL_FB_PAGE_ID` (mọi lần chạy đều bị bỏ qua, lần gần nhất là 16/11). Video nào đã đăng tay lên Trang thì dùng luôn. Video chưa đăng thì đăng trước, hoặc tải thẳng vào quảng cáo theo Cách B (mục 3.1).
-> 3. **Sửa caption trước khi đăng** (mục 3.3 và 3.4): thêm dòng ghi tên và địa chỉ (bắt buộc) và sửa vài chữ. Theo nhiều nguồn, bài đã chạy quảng cáo thì không sửa nội dung được nữa.
-> 4. **Kiểm tra nhạc trong clip.** Bài hát thương mại ghép sẵn trong file có thể bị Facebook tắt tiếng hoặc chặn, và quảng cáo có thể bị từ chối vì bản quyền. Dùng tiếng gốc hoặc nhạc lấy từ Meta Sound Collection.
-> 5. **Chuẩn bị Messenger.** Caption nào cũng mời "nhắn Mế", nên khi quảng cáo chạy, tin nhắn hỏi giá sẽ đến ngay (xem Bước 0).
+> 2. **Dùng tất cả video đang có trong mục Reels của Trang.** Mở Trang → tab **Reels**, đếm số video, ghi lại câu mở đầu của từng video. Hệ thống đăng tự động (`dang-reel-lich`) **chưa đăng bài nào** (repo còn thiếu biến `REEL_TABLE_ID` và `REEL_FB_PAGE_ID`), nên Reels trên Trang là các video anh đã đăng tay.
+> 3. **Kiểm tra caption của các Reel đó trước khi chạy.** Thêm dòng ghi tên và địa chỉ (bắt buộc, mục 3.3). Bỏ các chữ dễ bị từ chối: "nhất", "đảm bảo", "nhâm nhi/đồ nhắm/nhậu", "bình luận ĐẶT/chấm", "bà con người Mường ơi". Sửa ngay trên Trang. Theo nhiều nguồn, bài đã chạy quảng cáo thì không sửa nội dung được nữa. Bảng 3.4 và 3.5 áp dụng cho 29 caption trong `lich-dang-reel.csv`. Reel đăng tay với caption khác thì chỉ cần kiểm tra theo danh sách chữ cấm ở trên.
+> 4. **Nạp đủ tiền MoMo, đăng chiến dịch trước 20:00 ngày 16/11.** Vào Ads Manager → **Thanh toán** của tài khoản nick Hưng, kiểm tra số dư trả trước ≥ **770.000 đ**. Quảng cáo phải được **duyệt xong trước 00:02**, nên đăng chiến dịch trước khoảng **20:00 ngày 16/11** để Meta kịp duyệt (thường vài phút đến vài giờ).
+> 5. **Kiểm tra nhạc trong clip.** Bài hát thương mại ghép sẵn trong file có thể bị Facebook tắt tiếng hoặc chặn, và quảng cáo có thể bị từ chối vì bản quyền. Dùng tiếng gốc hoặc nhạc lấy từ Meta Sound Collection.
+> 6. **Chuẩn bị Messenger.** Caption nào cũng mời "nhắn Mế", nên khi quảng cáo chạy, tin nhắn hỏi giá sẽ đến ngay (xem Bước 0).
 
 ---
 
@@ -39,7 +42,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 | | Vị trí chuyển đổi | Trên quảng cáo của bạn |
 | | Mục tiêu hiệu quả | **Tối đa hóa số lượt tương tác** (Maximize Interactions). Nếu tài khoản không có mục này thì chọn "Tương tác với bài viết" |
 | | Trang | Mế Nguyệt Nem Chua |
-| | Lịch chạy | Bắt đầu [NGÀY BẮT ĐẦU QC] 00:00, **kết thúc đúng 7 ngày sau** 23:59 (ngân sách trọn đời bắt buộc có ngày kết thúc) |
+| | Lịch chạy | Bắt đầu **17/11/2026 00:02**, kết thúc **23/11/2026 23:59** (ngân sách trọn đời bắt buộc có ngày kết thúc); múi giờ GMT+7 |
 | | Vị trí địa lý | Thả ghim tại [ĐỊA CHỈ CỬA HÀNG], bán kính **20 km**. Xóa "Việt Nam" mặc định. Bỏ tích ô mở rộng vị trí nếu thấy |
 | | Đối tượng | Đối tượng Advantage+, không thêm gợi ý; tuổi tối thiểu **18**; mọi giới tính; không nhắm mục tiêu chi tiết; ngôn ngữ để trống; không loại trừ ai. **Người Mường:** Meta không cho chọn theo dân tộc, cách làm thay thế ở mục 2b |
 | | Vị trí quảng cáo | Ưu tiên **thủ công, chỉ giữ Facebook** nếu tài khoản còn cho chọn. Nếu không cho chọn: Vị trí quảng cáo Advantage+, và chặn Audience Network trong Cài đặt quảng cáo của tài khoản |
@@ -65,7 +68,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 4. **Messenger:** trong Meta Business Suite, bật tin nhắn trả lời tự động và câu hỏi thường gặp ("Nem chua bao nhiêu tiền?", "Có giao tới chỗ tôi không?", "Đặt thế nào?"). Ghi giá bán và khu vực giao hàng vào phần Giới thiệu của Trang. Chọn sẵn người trực tin nhắn trong thời gian quảng cáo chạy.
 
 **Bước 1: Chiến dịch**
-1. Trên Chrome đã đăng nhập **nick Hưng**, vào adsmanager.facebook.com và chọn **tài khoản quảng cáo của nick Hưng** ở góc trên bên trái. Kiểm tra tài khoản đã có phương thức thanh toán, tiền tệ là VND.
+1. Trên Chrome đã đăng nhập **nick Hưng**, vào adsmanager.facebook.com và chọn **tài khoản quảng cáo của nick Hưng** ở góc trên bên trái. Kiểm tra: tiền tệ VND, múi giờ Việt Nam, **số dư nạp qua MoMo ≥ 770.000 đ**.
 2. Bấm **+ Tạo**, chọn **Lượt tương tác** (Engagement), rồi bấm **Tiếp tục**.
 3. Đặt tên `MeNguyet_TuongTac_TatCaVideo_20km`. Để trống mục Danh mục quảng cáo đặc biệt.
 4. Ngân sách: bật **Ngân sách chiến dịch Advantage+** (Advantage+ campaign budget), chọn **Trọn đời** (Lifetime), nhập **700.000**. Để chiến lược giá thầu mặc định. Meta tự chia khoảng 100.000 đ mỗi ngày, có ngày nhiều có ngày ít, nhưng tổng không vượt 700.000 đ (chưa tính VAT).
@@ -78,7 +81,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 3. Nếu được hỏi Loại tương tác, chọn tương tác với bài viết, không chọn lượt xem video.
 4. Mục tiêu hiệu quả: chọn **Tối đa hóa số lượt tương tác**. Nếu chỉ thấy **Tương tác với bài viết** thì chọn mục đó. Khi đó chi phí mỗi kết quả sẽ thấp hơn, vì Meta tính cả lượt xem video, nên không so được với số ước tính ở mục 4. Ngưỡng ở mục 5 vẫn dùng được vì chúng so với chính số liệu tuần đầu.
 5. Trang Facebook: chọn Mế Nguyệt Nem Chua.
-6. Lịch chạy: ngày bắt đầu [NGÀY BẮT ĐẦU QC] 00:00, ngày kết thúc **đúng 7 ngày sau** 23:59. Không cần cài khung giờ chạy.
+6. Lịch chạy: bắt đầu **17/11/2026 lúc 00:02**, kết thúc **23/11/2026 lúc 23:59**. Không cần cài khung giờ chạy. Kiểm tra dòng múi giờ cạnh ô ngày giờ phải là **giờ Việt Nam (GMT+7)**. Nếu là múi giờ khác thì 00:02 sẽ bị lệch.
 7. **Vị trí địa lý (quan trọng):**
    - Xóa "Việt Nam" khỏi ô Vị trí. Nếu để lại, quảng cáo sẽ chạy cả nước.
    - Gõ [ĐỊA CHỈ CỬA HÀNG] hoặc bấm **Thả ghim** đúng chỗ cửa hàng, rồi đặt bán kính **20 km**.
@@ -240,10 +243,10 @@ Nếu không sửa bài 16, 17 thì vẫn đưa vào quảng cáo được, như
 
 | Mốc | Việc cần làm |
 |---|---|
-| Trước ngày 1 | Cấp quyền cho nick Hưng, đăng hoặc sửa video và caption, cài Messenger |
-| Ngày 1 | Đăng chiến dịch, chờ duyệt (thường trong 24 giờ) |
-| Ngày 3 | Kiểm tra theo mục 5 |
-| Ngày 7 (kết thúc) | Tổng kết theo mục 5, quyết định tuần sau |
+| 16/11, trước 20:00 | Cấp quyền cho nick Hưng, kiểm tra caption các Reel, nạp MoMo ≥ 770.000 đ, cài Messenger, **đăng chiến dịch** để Meta duyệt |
+| 17/11, 00:02 | Quảng cáo bắt đầu chạy |
+| 19/11 (ngày 3) | Kiểm tra theo mục 5 |
+| 23/11, 23:59 (ngày 7) | Kết thúc. Tổng kết theo mục 5, quyết định tuần sau |
 
 ---
 
@@ -315,7 +318,7 @@ Sau tuần chạy tương tác này, khi đã có khoảng **1.000 người tr�
 2. **[TÊN CHỦ CƠ SỞ / HỘ KINH DOANH]**: tên đã đăng ký, hoặc tên người chịu trách nhiệm.
 3. ~~Ngân sách~~ **Đã chốt:** 700.000 đ trọn đời, 7 ngày.
 4. ~~Tài khoản quảng cáo~~ **Đã chốt:** tài khoản trong nick Hưng. Cần kiểm tra: đã có phương thức thanh toán, tiền tệ VND, múi giờ Việt Nam, nick Hưng đã có quyền Quảng cáo trên Trang Mế Nguyệt.
-5. **[NGÀY BẮT ĐẦU QC]**: ngày kết thúc tự tính là 7 ngày sau.
+5. ~~Ngày chạy~~ **Đã chốt:** 17/11/2026 00:02 đến 23/11/2026 23:59. Thanh toán bằng tiền nạp MoMo.
 6. **Tình trạng video:** đã gắn đủ 29 clip chưa, đã đăng bài nào, clip nào có nhạc (nhạc gì), có clip nào có hình bia rượu hoặc trận bóng không. Trang đã có video/Reel nào khác ngoài 29 bài này không? Nếu có thì đưa vào cùng nhóm.
 7. **Xác nhận sự thật:** các mục ở cột "Kiểm tra trước khi chạy" (giờ gói nem, đi chợ, loại lá ăn kèm, các chuyện khách đặt, có giao trong ngày không, có nhận đơn quà Tết không, có dùng men hoặc phụ gia không).
 8. **Mục tiêu ưu tiên:** muốn nhiều tương tác (cấu hình hiện tại) hay nhiều lượt xem (ThruPlay).
