@@ -8,7 +8,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 | Mục tiêu | Lượt tương tác |
 | Ngân sách | **700.000 đ trọn đời cho 7 ngày** (khoảng 100.000 đ/ngày). Meta cộng thêm 10% VAT, nên thực trả khoảng **770.000 đ** |
 | Thời gian | **Bắt đầu 00:02 ngày 17/11/2026**, kết thúc **23:59 ngày 23/11/2026** (7 ngày). Theo quy tắc của anh: quảng cáo luôn bắt đầu lúc 00:02. Múi giờ tài khoản phải là giờ Việt Nam (GMT+7) |
-| Khu vực | Ghim tại [ĐỊA CHỈ CỬA HÀNG], **bán kính 20 km** (vùng tròn rộng khoảng 1.250 km²) |
+| Khu vực | Ghim tại **Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ** (trước 01/07/2025 là xã Cao Dương, huyện Lương Sơn, tỉnh Hòa Bình), **bán kính 20 km** (vùng tròn rộng khoảng 1.250 km²) |
 | Đối tượng | Tất cả: nam nữ, 18 đến 65+, không chọn sở thích. **Hướng tới người Mường** bằng vị trí ghim và nội dung video (Meta không cho chọn theo dân tộc, xem mục 2b) |
 | Video | **Tất cả video đang có trong mục Reels của Trang** (dùng bài viết có sẵn), mỗi video là 1 quảng cáo, cùng 1 nhóm |
 | Tài khoản | Tài khoản quảng cáo trong nick Hưng (Chrome đã đăng nhập sẵn) |
@@ -43,7 +43,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 | | Mục tiêu hiệu quả | **Tối đa hóa số lượt tương tác** (Maximize Interactions). Nếu tài khoản không có mục này thì chọn "Tương tác với bài viết" |
 | | Trang | Mế Nguyệt Nem Chua |
 | | Lịch chạy | Bắt đầu **17/11/2026 00:02**, kết thúc **23/11/2026 23:59** (ngân sách trọn đời bắt buộc có ngày kết thúc); múi giờ GMT+7 |
-| | Vị trí địa lý | Thả ghim tại [ĐỊA CHỈ CỬA HÀNG], bán kính **20 km**. Xóa "Việt Nam" mặc định. Bỏ tích ô mở rộng vị trí nếu thấy |
+| | Vị trí địa lý | Thả ghim tại **Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ** (Lương Sơn cũ), bán kính **20 km**. Xóa "Việt Nam" mặc định. Bỏ tích ô mở rộng vị trí nếu thấy |
 | | Đối tượng | Đối tượng Advantage+, không thêm gợi ý; tuổi tối thiểu **18**; mọi giới tính; không nhắm mục tiêu chi tiết; ngôn ngữ để trống; không loại trừ ai. **Người Mường:** Meta không cho chọn theo dân tộc, cách làm thay thế ở mục 2b |
 | | Vị trí quảng cáo | Ưu tiên **thủ công, chỉ giữ Facebook** nếu tài khoản còn cho chọn. Nếu không cho chọn: Vị trí quảng cáo Advantage+, và chặn Audience Network trong Cài đặt quảng cáo của tài khoản |
 | **Quảng cáo** (1 quảng cáo cho 1 Reel) | Danh tính | Trang Mế Nguyệt Nem Chua. Nếu còn vị trí Instagram: chọn "Sử dụng Trang Facebook" (không cần tài khoản Instagram) |
@@ -84,7 +84,8 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 6. Lịch chạy: bắt đầu **17/11/2026 lúc 00:02**, kết thúc **23/11/2026 lúc 23:59**. Không cần cài khung giờ chạy. Kiểm tra dòng múi giờ cạnh ô ngày giờ phải là **giờ Việt Nam (GMT+7)**. Nếu là múi giờ khác thì 00:02 sẽ bị lệch.
 7. **Vị trí địa lý (quan trọng):**
    - Xóa "Việt Nam" khỏi ô Vị trí. Nếu để lại, quảng cáo sẽ chạy cả nước.
-   - Gõ [ĐỊA CHỈ CỬA HÀNG] hoặc bấm **Thả ghim** đúng chỗ cửa hàng, rồi đặt bán kính **20 km**.
+   - Ô tìm vị trí của Meta có thể chưa có tên "Suối Sỏi", hoặc vẫn dùng tên cũ "Lương Sơn, Hòa Bình". Cách chắc nhất: bấm **Thả ghim** (Drop pin), kéo bản đồ tới đúng xóm Suối Sỏi (xã Cao Dương cũ, phía bắc thị trấn Lương Sơn cũ), thả ghim vào chỗ cửa hàng, rồi đặt bán kính **20 km**.
+   - Nhìn vòng tròn trên bản đồ để biết quảng cáo phủ tới đâu. Vòng 20 km quanh Cao Dương nhiều khả năng lấn sang phần Hà Nội giáp ranh (ví dụ Xuân Mai, Hòa Lạc), nơi phần lớn là người Kinh. Như vậy vẫn đúng ý "mọi đối tượng".
    - Nếu thấy ô "Tiếp cận nhiều người hơn có khả năng phản hồi quảng cáo" (Reach more people likely to respond…), **bỏ tích**. Ô này đưa quảng cáo ra ngoài vòng 20 km.
    - Meta chỉ còn một kiểu vị trí là "người sống hoặc mới ở khu vực này", nên một số khách vãng lai cũng sẽ thấy quảng cáo.
 8. **Đối tượng:** bật Đối tượng Advantage+ và không thêm gợi ý nào. Bấm "Hiển thị thêm tùy chọn" (kiểm soát đối tượng): tuổi tối thiểu **18**, ngôn ngữ để trống, không loại trừ ai.
@@ -115,6 +116,10 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 ---
 
 ## 2b. Đánh vào người dân tộc Mường
+
+**Ai là người Mường trong vòng 20 km quanh Cao Dương đều có thể thấy video.** Đối tượng để "tất cả" và không loại trừ ai, nên mọi người Mường sống hoặc mới ở trong vòng tròn đều nằm trong tệp quảng cáo. Lương Sơn là vùng Mường, nên ghim tại cửa hàng đã đúng chỗ. Tuy vậy, 700.000 đ chỉ mua được khoảng 12.000 đến 28.000 lượt hiển thị, nên **không phải ai trong vòng tròn cũng thấy** trong 7 ngày. Meta sẽ ưu tiên những người hay tương tác.
+
+**Người Mường ở ngoài vòng 20 km** (ví dụ Kim Bôi, Cao Phong, Tân Lạc, Lạc Sơn) sẽ không thấy, trừ khi thêm ghim cho các vùng đó. Chỉ nên thêm nếu giao hàng tới đó được. Với 700.000 đ/tuần, thêm vùng sẽ làm tiền bị chia mỏng, nên tuần đầu chỉ giữ 1 vòng 20 km.
 
 **Meta không cho nhắm theo dân tộc.** Từ 19/01/2022, Meta đã bỏ mọi lựa chọn đối tượng liên quan đến chủng tộc, dân tộc. Meta cũng không có tiếng Mường trong mục Ngôn ngữ. Vì vậy trong Ads Manager không có ô nào chọn "người Mường". Cách làm hợp lệ để quảng cáo đến được nhiều người Mường:
 
@@ -150,7 +155,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 ### 3.3 Dòng bắt buộc ở cuối caption (cả 29 bài)
 Thêm dòng này vào cuối cột `Nội dung`:
 ```
-Nem chua Mế Nguyệt – [TÊN CHỦ CƠ SỞ / HỘ KINH DOANH] – Địa chỉ: [ĐỊA CHỈ CỬA HÀNG]
+Nem chua Mế Nguyệt – [TÊN CHỦ CƠ SỞ / HỘ KINH DOANH] – Địa chỉ: Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ
 ```
 *Lưu ý:* địa chỉ sẽ hiện công khai và lâu dài trên mọi bài. Nếu đây là địa chỉ nhà riêng, anh cân nhắc dùng địa chỉ đăng ký kinh doanh hoặc điểm nhận hàng (nếu có). Quảng cáo thực phẩm vẫn bắt buộc phải có địa chỉ (Nghị định 342/2025).
 
@@ -314,7 +319,7 @@ Sau tuần chạy tương tác này, khi đã có khoảng **1.000 người tr�
 ---
 
 ## 8. Thông tin anh cần cung cấp
-1. **[ĐỊA CHỈ CỬA HÀNG]**: địa chỉ đầy đủ, dùng làm tâm vòng 20 km và ghi vào dòng bắt buộc. Có đồng ý để địa chỉ này hiện công khai trên mọi bài không, hay có địa chỉ kinh doanh hoặc điểm nhận hàng khác?
+1. ~~Địa chỉ~~ **Đã chốt:** Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ (Lương Sơn cũ, Hòa Bình cũ). Dùng làm tâm vòng 20 km và ghi vào dòng bắt buộc. Lưu ý địa chỉ sẽ hiện công khai trên các bài.
 2. **[TÊN CHỦ CƠ SỞ / HỘ KINH DOANH]**: tên đã đăng ký, hoặc tên người chịu trách nhiệm.
 3. ~~Ngân sách~~ **Đã chốt:** 700.000 đ trọn đời, 7 ngày.
 4. ~~Tài khoản quảng cáo~~ **Đã chốt:** tài khoản trong nick Hưng. Cần kiểm tra: đã có phương thức thanh toán, tiền tệ VND, múi giờ Việt Nam, nick Hưng đã có quyền Quảng cáo trên Trang Mế Nguyệt.
