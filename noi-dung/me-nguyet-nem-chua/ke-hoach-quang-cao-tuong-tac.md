@@ -1,16 +1,16 @@
 # Kế hoạch quảng cáo Facebook: Mế Nguyệt Nem Chua
 
-**1 chiến dịch Tương tác cho tất cả video Reels của Trang, 7 ngày, tổng 700.000 đ, 2 nhóm: (1) mọi người trong bán kính 20 km quanh cửa hàng, (2) các vùng người Mường sống đông trên cả nước. Mọi lứa tuổi.**
+**2 chiến dịch Tương tác, mỗi chiến dịch 50.000 đ/ngày × 7 ngày = 350.000 đ, cùng chạy tất cả video Reels của Trang. Chiến dịch 1: mọi người trong bán kính 20 km quanh cửa hàng. Chiến dịch 2: các vùng người Mường sống đông trên cả nước. Mọi lứa tuổi.**
 Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hưng**. Chỗ nào để trong [NGOẶC VUÔNG] là thông tin anh cần điền (xem mục 8).
 
 | Đã chốt | Giá trị |
 |---|---|
 | Mục tiêu | Lượt tương tác |
-| Ngân sách | **700.000 đ trọn đời cho 7 ngày**: Nhóm 1 (20 km) **350.000 đ**, Nhóm 2 (vùng Mường cả nước) **350.000 đ**. Meta cộng thêm 10% VAT, nên thực trả khoảng **770.000 đ** |
+| Ngân sách | **2 chiến dịch riêng, mỗi chiến dịch 50.000 đ/ngày × 7 ngày = 350.000 đ**. Tổng 700.000 đ, Meta cộng thêm 10% VAT, nên thực trả khoảng **770.000 đ** |
 | Thời gian | **Bắt đầu 00:02 ngày 17/11/2026**, kết thúc **23:59 ngày 23/11/2026** (7 ngày). Theo quy tắc của anh: quảng cáo luôn bắt đầu lúc 00:02. Múi giờ tài khoản phải là giờ Việt Nam (GMT+7) |
 | Khu vực | Ghim tại **Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ** (trước 01/07/2025 là xã Cao Dương, huyện Lương Sơn, tỉnh Hòa Bình), **bán kính 20 km** (vùng tròn rộng khoảng 1.250 km²) |
 | Đối tượng | Tất cả: nam nữ, **già trẻ lớn bé (13 đến 65+, mức thấp nhất Meta cho)**, không chọn sở thích |
-| Người Mường | Meta **không cho chọn theo dân tộc**. Để người Mường ở khắp Việt Nam thấy video, Nhóm 2 thả ghim ở tất cả vùng người Mường sống đông (mục 2b) |
+| Người Mường | Meta **không cho chọn theo dân tộc**. Để người Mường ở khắp Việt Nam thấy video, Chiến dịch 2 thả ghim ở tất cả vùng người Mường sống đông (mục 2b) |
 | Video | **Tất cả video đang có trong mục Reels của Trang** (dùng bài viết có sẵn), mỗi video là 1 quảng cáo, cùng 1 nhóm |
 | Tài khoản | Tài khoản quảng cáo trong nick Hưng (Chrome đã đăng nhập sẵn) |
 | Thanh toán | **Tiền đã nạp qua MoMo** (số dư trả trước trong tài khoản quảng cáo). Số dư cần **ít nhất 770.000 đ** (700.000 đ + 10% VAT). Hết số dư thì quảng cáo tự dừng |
@@ -31,21 +31,20 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 
 | Cấp | Mục | Giá trị |
 |---|---|---|
-| **Chiến dịch** | Tên | `MeNguyet_TuongTac_TatCaVideo_20km` |
+| **Chiến dịch** (2 chiến dịch, giống hệt nhau trừ vị trí) | Tên | CD1: `MeNguyet_TuongTac_20km_CaoDuong`; CD2: `MeNguyet_TuongTac_VungMuong` |
 | | Loại mua | Đấu giá |
 | | Mục tiêu | **Lượt tương tác** |
 | | Danh mục quảng cáo đặc biệt | Không chọn |
-| | Ngân sách | **Tắt** Ngân sách chiến dịch Advantage+. Ngân sách đặt ở từng nhóm (trọn đời 350.000 đ mỗi nhóm), để Meta không dồn hết tiền vào một nhóm |
-| | Giới hạn chi tiêu chiến dịch | Không bắt buộc, vì ngân sách trọn đời đã là mức trần. Muốn chắc chắn thì đặt 700.000 đ |
+| | Ngân sách | Ngân sách chiến dịch Advantage+, **Hằng ngày 50.000 đ** (mỗi chiến dịch) |
+| | Giới hạn chi tiêu chiến dịch | **350.000 đ** mỗi chiến dịch. Có ngày Meta chi hơn 50.000 đ (tối đa thêm 75%), nhưng cả 7 ngày không vượt 350.000 đ |
 | | Chiến lược giá thầu | Số lượng cao nhất (mặc định), không đặt giới hạn giá |
 | | Thử nghiệm A/B | Tắt |
-| **Nhóm quảng cáo** (2 nhóm, giống hệt nhau trừ vị trí) | Tên | Nhóm 1: `N1_20km_CaoDuong`; Nhóm 2: `N2_VungMuong_CaNuoc` |
-| | Ngân sách nhóm | **Trọn đời 350.000 đ** mỗi nhóm |
+| **Nhóm quảng cáo** (mỗi chiến dịch 1 nhóm) | Tên | CD1: `20km_CaoDuong`; CD2: `VungMuong_CaNuoc` |
 | | Vị trí chuyển đổi | Trên quảng cáo của bạn |
 | | Mục tiêu hiệu quả | **Tối đa hóa số lượt tương tác** (Maximize Interactions). Nếu tài khoản không có mục này thì chọn "Tương tác với bài viết" |
 | | Trang | Mế Nguyệt Nem Chua |
-| | Lịch chạy | Bắt đầu **17/11/2026 00:02**, kết thúc **23/11/2026 23:59** (ngân sách trọn đời bắt buộc có ngày kết thúc); múi giờ GMT+7 |
-| | Vị trí địa lý | **Nhóm 1:** ghim tại **Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ** (Lương Sơn cũ), bán kính **20 km**. **Nhóm 2:** các ghim vùng Mường ở mục 2b. Cả hai nhóm: xóa "Việt Nam" mặc định, bỏ tích ô mở rộng vị trí nếu thấy |
+| | Lịch chạy | Bắt đầu **17/11/2026 00:02**, kết thúc **23/11/2026 23:59** ; múi giờ GMT+7 |
+| | Vị trí địa lý | **CD1:** ghim tại **Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ** (Lương Sơn cũ), bán kính **20 km**. **CD2:** các ghim vùng Mường ở mục 2b. Cả hai: xóa "Việt Nam" mặc định, bỏ tích ô mở rộng vị trí nếu thấy |
 | | Đối tượng | Tuổi **13 đến 65+** (mọi lứa tuổi); mọi giới tính; không nhắm mục tiêu chi tiết; ngôn ngữ để trống; không loại trừ ai. Meta không cho chọn theo dân tộc |
 | | Vị trí quảng cáo | Ưu tiên **thủ công, chỉ giữ Facebook** nếu tài khoản còn cho chọn. Nếu không cho chọn: Vị trí quảng cáo Advantage+, và chặn Audience Network trong Cài đặt quảng cáo của tài khoản |
 | **Quảng cáo** (1 quảng cáo cho 1 Reel) | Danh tính | Trang Mế Nguyệt Nem Chua. Nếu còn vị trí Instagram: chọn "Sử dụng Trang Facebook" (không cần tài khoản Instagram) |
@@ -69,16 +68,16 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 3. Kiểm tra nhạc của từng clip. Clip chưa có trên Trang thì đăng lên (đăng tay, hoặc đổi `Lịch đăng` sang ngày mới rồi chạy `dang-reel-lich` sau khi đã đặt đủ biến). Reel chưa đăng thì không chọn được trong mục "bài viết hiện có".
 4. **Messenger:** trong Meta Business Suite, bật tin nhắn trả lời tự động và câu hỏi thường gặp ("Nem chua bao nhiêu tiền?", "Có giao tới chỗ tôi không?", "Đặt thế nào?"). Ghi giá bán và khu vực giao hàng vào phần Giới thiệu của Trang. Chọn sẵn người trực tin nhắn trong thời gian quảng cáo chạy.
 
-**Bước 1: Chiến dịch**
+**Bước 1: Chiến dịch 1 (20 km quanh cửa hàng)**
 1. Trên Chrome đã đăng nhập **nick Hưng**, vào adsmanager.facebook.com và chọn **tài khoản quảng cáo của nick Hưng** ở góc trên bên trái. Kiểm tra: tiền tệ VND, múi giờ Việt Nam, **số dư nạp qua MoMo ≥ 770.000 đ**.
 2. Bấm **+ Tạo**, chọn **Lượt tương tác** (Engagement), rồi bấm **Tiếp tục**.
-3. Đặt tên `MeNguyet_TuongTac_TatCaVideo_20km`. Để trống mục Danh mục quảng cáo đặc biệt.
-4. Ngân sách: **tắt** Ngân sách chiến dịch Advantage+ (Advantage+ campaign budget). Tiền sẽ đặt ở từng nhóm, mỗi nhóm 350.000 đ, tổng 700.000 đ (chưa tính VAT). Để chiến lược giá thầu mặc định.
-5. **Giới hạn chi tiêu chiến dịch:** không bắt buộc. Muốn chắc chắn thì nhập 700.000.
+3. Đặt tên `MeNguyet_TuongTac_20km_CaoDuong`. Để trống mục Danh mục quảng cáo đặc biệt.
+4. Ngân sách: bật **Ngân sách chiến dịch Advantage+**, chọn **Hằng ngày**, nhập **50.000**. Để chiến lược giá thầu mặc định.
+5. **Giới hạn chi tiêu chiến dịch:** nhập **350.000**. Nếu lúc tạo không thấy ô này, đăng xong thì vào sửa chiến dịch và đặt.
 6. Bấm **Tiếp**.
 
-**Bước 2: Nhóm 1 (20 km quanh cửa hàng)**
-1. Đặt tên `N1_20km_CaoDuong`. Ngân sách nhóm: **Trọn đời 350.000 đ**.
+**Bước 2: Nhóm quảng cáo của Chiến dịch 1**
+1. Đặt tên `20km_CaoDuong`.
 2. Vị trí chuyển đổi: chọn **Trên quảng cáo của bạn** (On your ad).
 3. Nếu được hỏi Loại tương tác, chọn tương tác với bài viết, không chọn lượt xem video.
 4. Mục tiêu hiệu quả: chọn **Tối đa hóa số lượt tương tác**. Nếu chỉ thấy **Tương tác với bài viết** thì chọn mục đó. Khi đó chi phí mỗi kết quả sẽ thấp hơn, vì Meta tính cả lượt xem video, nên không so được với số ước tính ở mục 4. Ngưỡng ở mục 5 vẫn dùng được vì chúng so với chính số liệu tuần đầu.
@@ -112,14 +111,14 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 2. Đổi tên bản sao thành `R02`, bấm **Thay đổi bài viết**, chọn Reel số 2.
 3. Lặp lại cho đến hết các video trong tab **Reels** của Trang.
 
-**Bước 4b: Tạo Nhóm 2 (vùng Mường cả nước)**
-1. Ở cây chiến dịch bên trái, bấm **Nhân bản** cạnh nhóm `N1_20km_CaoDuong`, chọn **Chiến dịch hiện tại**, 1 bản. Nhóm mới có sẵn đủ các quảng cáo Reel.
-2. Đổi tên thành `N2_VungMuong_CaNuoc`. Ngân sách nhóm: **Trọn đời 350.000 đ**.
-3. Vị trí: **xóa ghim Cao Dương 20 km**, rồi thả lần lượt các ghim ở bảng mục 2b, mỗi ghim chỉnh bán kính theo bảng.
-4. Các mục khác giữ nguyên như Nhóm 1: tuổi 13 đến 65+, mọi giới tính, lịch 17/11 00:02 đến 23/11 23:59.
+**Bước 4b: Tạo Chiến dịch 2 (vùng Mường cả nước)**
+1. Ở danh sách chiến dịch, tích chọn `MeNguyet_TuongTac_20km_CaoDuong`, bấm **Nhân bản**, 1 bản. Chiến dịch mới có sẵn nhóm quảng cáo và đủ các quảng cáo Reel.
+2. Đổi tên chiến dịch thành `MeNguyet_TuongTac_VungMuong`. Kiểm tra ngân sách: **Hằng ngày 50.000 đ**, giới hạn chi tiêu **350.000 đ**.
+3. Mở nhóm quảng cáo, đổi tên thành `VungMuong_CaNuoc`. Vị trí: **xóa ghim Cao Dương 20 km**, rồi thả lần lượt các ghim ở bảng mục 2b, mỗi ghim chỉnh bán kính theo bảng.
+4. Các mục khác giữ nguyên như Chiến dịch 1: tuổi 13 đến 65+, mọi giới tính, lịch 17/11 00:02 đến 23/11 23:59.
 
 **Bước 5: Đăng**
-1. Kiểm tra lại: Nhóm 1 là ghim Cao Dương 20 km; Nhóm 2 là các ghim vùng Mường; cả hai nhóm không còn "Việt Nam"; mỗi nhóm **trọn đời 350.000 đ**; lịch 17/11 00:02 đến 23/11 23:59; tuổi 13 đến 65+; số quảng cáo mỗi nhóm bằng số video trong tab Reels.
+1. Kiểm tra lại cả 2 chiến dịch: CD1 là ghim Cao Dương 20 km; CD2 là các ghim vùng Mường; không còn "Việt Nam"; mỗi chiến dịch **50.000 đ/ngày, giới hạn 350.000 đ**; lịch 17/11 00:02 đến 23/11 23:59; tuổi 13 đến 65+; số quảng cáo bằng số video trong tab Reels.
 2. Bấm **Đăng**. Quảng cáo thường được duyệt trong vòng 24 giờ.
 3. **Không** bấm "Quảng cáo bài viết" (đẩy bài) trên từng Reel. Làm vậy sẽ tạo ra nhiều chiến dịch lẻ, không gom về một chỗ.
 
@@ -127,9 +126,9 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 
 ## 2b. Đánh vào người dân tộc Mường
 
-**Nhóm 1: ai là người Mường trong vòng 20 km quanh Cao Dương đều có thể thấy video.** Đối tượng để "tất cả", mọi lứa tuổi, không loại trừ ai. Lương Sơn là vùng Mường. Tuy vậy, 350.000 đ chỉ mua được khoảng 6.000 đến 14.000 lượt hiển thị, nên **không phải ai trong vòng tròn cũng thấy** trong 7 ngày. Meta sẽ ưu tiên những người hay tương tác.
+**Chiến dịch 1: ai là người Mường trong vòng 20 km quanh Cao Dương đều có thể thấy video.** Đối tượng để "tất cả", mọi lứa tuổi, không loại trừ ai. Lương Sơn là vùng Mường. Tuy vậy, 50.000 đ/ngày (350.000 đ cả tuần) chỉ mua được khoảng 6.000 đến 14.000 lượt hiển thị, nên **không phải ai trong vòng tròn cũng thấy** trong 7 ngày. Meta sẽ ưu tiên những người hay tương tác.
 
-**Người Mường ở khắp Việt Nam (Nhóm 2).** Meta không cho chọn "người Mường", nên cách sát nhất là thả ghim ở **tất cả vùng người Mường sống đông**. Trong các vùng này, Meta cho hiển thị với mọi người ở đó, kể cả người Kinh và dân tộc khác. Không có cách nào chỉ hiện cho người Mường.
+**Người Mường ở khắp Việt Nam (Chiến dịch 2).** Meta không cho chọn "người Mường", nên cách sát nhất là thả ghim ở **tất cả vùng người Mường sống đông**. Trong các vùng này, Meta cho hiển thị với mọi người ở đó, kể cả người Kinh và dân tộc khác. Không có cách nào chỉ hiện cho người Mường.
 
 | Vùng (tên huyện cũ để thả ghim) | Ghim tại | Bán kính |
 |---|---|---|
@@ -143,12 +142,12 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 *Số người Mường theo Tổng điều tra 2019, tổng cả nước khoảng 1,45 triệu người. Tên huyện là tên cũ trước sáp nhập 2025, chỉ để tìm chỗ thả ghim trên bản đồ.*
 
 - **Người Mường sống rải rác ở thành phố lớn** (nội thành Hà Nội, TP.HCM…) hoặc đã chuyển vào Tây Nguyên thì không khoanh được riêng. Họ chỉ thấy khi video có tiếng Mường và được chia sẻ.
-- **Tiền mỏng:** 350.000 đ cho vùng có hơn 1 triệu người Mường (chưa kể người Kinh sống cùng vùng) chỉ mua được khoảng 6.000 đến 14.000 lượt hiển thị trong 7 ngày. Muốn phủ rộng hơn thì tăng ngân sách Nhóm 2.
-- **Giao hàng:** khách ở Thanh Hóa, Sơn La… sẽ nhắn đặt. Chỉ chạy Nhóm 2 nếu Mế gửi nem đi xa được (nem chua cần giữ mát khi gửi).
+- **Tiền mỏng:** 350.000 đ cho vùng có hơn 1 triệu người Mường (chưa kể người Kinh sống cùng vùng) chỉ mua được khoảng 6.000 đến 14.000 lượt hiển thị trong 7 ngày. Muốn phủ rộng hơn thì tăng ngân sách ngày của Chiến dịch 2.
+- **Giao hàng:** khách ở Thanh Hóa, Sơn La… sẽ nhắn đặt. Chỉ chạy Chiến dịch 2 nếu Mế gửi nem đi xa được (nem chua cần giữ mát khi gửi).
 
 **Meta không cho nhắm theo dân tộc.** Từ 19/01/2022, Meta đã bỏ mọi lựa chọn đối tượng liên quan đến chủng tộc, dân tộc. Meta cũng không có tiếng Mường trong mục Ngôn ngữ. Vì vậy trong Ads Manager không có ô nào chọn "người Mường". Cách làm hợp lệ để quảng cáo đến được nhiều người Mường:
 
-1. **Khoanh vùng theo nơi người Mường sống**: Nhóm 1 (Lương Sơn là vùng Mường) và Nhóm 2 (bảng ở trên).
+1. **Khoanh vùng theo nơi người Mường sống**: Chiến dịch 1 (Lương Sơn là vùng Mường) và Chiến dịch 2 (bảng ở trên).
 2. **Để video tự "gọi" người Mường.** Đây là cách hiệu quả nhất. Meta tự đẩy quảng cáo tới người giống những ai dừng xem và tương tác nhiều.
    - Mế nói **tiếng Mường** trong clip, hoặc chào bằng tiếng Mường ở 2 đến 3 giây đầu.
    - Có hình ảnh quen thuộc với người Mường: nhà sàn, bếp củi, lá gói nem quê, váy Mường.
@@ -171,7 +170,7 @@ Lập ngày 16/11/2026. Chạy bằng **tài khoản quảng cáo trong nick Hư
 - Nếu Trang đã có Reel khác ngoài 29 bài này, đưa luôn vào cùng nhóm.
 - **Thời điểm:** chiến dịch chỉ chạy 7 ngày, nên đưa **tất cả video đã có trên Trang vào ngay từ đầu, một lần**. Không thêm video giữa chừng: mỗi lần thêm, Meta phải học lại từ đầu và tuần chạy ngắn sẽ phí tiền.
 - Meta sẽ dồn phần lớn tiền vào 2 đến 5 video tốt nhất. Hệ thống được thiết kế như vậy. Video gần như không được chi tiền không có nghĩa là video dở, chỉ là Meta chưa chọn nó. Hãy đánh giá kết quả ở cấp nhóm.
-- **Chỉ 2 nhóm quảng cáo** (20 km và vùng Mường), mỗi nhóm có đủ tất cả video. Không chia nhỏ thêm, vì với 700.000 đ/7 ngày nhóm nào cũng sẽ thiếu dữ liệu để Meta học.
+- **2 chiến dịch, mỗi chiến dịch 1 nhóm** (20 km và vùng Mường), mỗi nhóm có đủ tất cả video. Không chia nhỏ thêm, vì với 50.000 đ/ngày mỗi chiến dịch, chia nhỏ thì nhóm nào cũng thiếu dữ liệu để Meta học.
 - **Tuần sau (nếu chạy tiếp):** muốn video khác cũng được chạy thì tắt 1 đến 2 video đã ăn nhiều tiền nhất, hoặc dùng **"Đẩy phân phối cho quảng cáo này"** (Push delivery to this ad, nếu tài khoản có).
 - Meta coi các video có mở đầu giống nhau gần như là một quảng cáo. Vì vậy 2 đến 3 giây đầu của các clip nên khác nhau: cảnh gói nem, bóc nem, đĩa nem, Mế nói.
 
@@ -253,18 +252,18 @@ Nếu không sửa bài 16, 17 thì vẫn đưa vào quảng cáo được, như
 ## 4. Ngân sách và thời gian
 *Mọi con số dưới đây là **ước tính** từ blog, agency và công cụ bên thứ ba, không phải số liệu chính thức của Meta. Sau 7 ngày chạy, anh thay bằng số thật trong tài khoản.*
 
-**Ngân sách đã chốt: 700.000 đ trọn đời cho 7 ngày** (trung bình 100.000 đ/ngày). Meta tính thêm **10% thuế GTGT** (từ 01/07/2025), nên **tổng thực trả khoảng 770.000 đ**. Với ngân sách trọn đời, Meta chi không đều giữa các ngày nhưng không vượt 700.000 đ.
+**Ngân sách đã chốt: 2 chiến dịch × 50.000 đ/ngày × 7 ngày = 2 × 350.000 đ = 700.000 đ.** Meta tính thêm **10% thuế GTGT** (từ 01/07/2025), nên **tổng thực trả khoảng 770.000 đ** (mỗi chiến dịch khoảng 385.000 đ). Có ngày Meta chi hơn 50.000 đ (tối đa thêm 75%), có ngày ít hơn, nhưng giới hạn chi tiêu 350.000 đ giữ mỗi chiến dịch không vượt mức.
 
 **Kết quả dự kiến cho cả 7 ngày:**
 
 | Chỉ số | Ước tính | Cả 7 ngày |
 |---|---|---|
-| Giá 1.000 lượt hiển thị (CPM) | 25.000 đến 60.000 đ | khoảng 12.000 đến 28.000 lượt hiển thị (mỗi nhóm khoảng một nửa) |
-| Chi phí mỗi lượt tương tác (mục tiêu mới, **chưa có số đo**) | 1.000 đến 5.000 đ, nhiều khả năng khoảng 2.000 đến 3.000 đ | 140 đến 700 lượt, nhiều khả năng **230 đến 350 lượt** |
-| Chi phí mỗi ThruPlay (nếu đổi mục tiêu) | 150 đến 700 đ | 1.000 đến 4.700 lượt xem hết |
+| Giá 1.000 lượt hiển thị (CPM) | 25.000 đến 60.000 đ | khoảng 6.000 đến 14.000 lượt hiển thị **mỗi chiến dịch** (tổng 12.000 đến 28.000) |
+| Chi phí mỗi lượt tương tác (mục tiêu mới, **chưa có số đo**) | 1.000 đến 5.000 đ, nhiều khả năng khoảng 2.000 đến 3.000 đ | 70 đến 350 lượt mỗi chiến dịch, nhiều khả năng **115 đến 175 lượt** (tổng 230 đến 350) |
+| Chi phí mỗi ThruPlay (nếu đổi mục tiêu) | 150 đến 700 đ | 500 đến 2.300 lượt xem hết mỗi chiến dịch |
 
 - **Cách tự ước tính:** chi phí mỗi lượt tương tác ≈ CPM ÷ (1.000 × tỷ lệ người tương tác). Ví dụ CPM 40.000 đ, cứ 100 người thấy có 1,5 người tương tác, thì khoảng 2.700 đ mỗi lượt. Các bảng giá "100 đến 500 đ/tương tác" trên blog Việt Nam là số của mục tiêu cũ (tính cả lượt xem video), không áp dụng ở đây.
-- **Đủ để Meta học:** Meta cần khoảng 50 kết quả trong 7 ngày cho mỗi nhóm. Ở mức 5.000 đ/kết quả, cần khoảng 36.000 đ/ngày. Một nhóm chạy 100.000 đ/ngày là đủ.
+- **Đủ để Meta học:** Meta cần khoảng 50 kết quả trong 7 ngày cho mỗi nhóm. Ở mức 5.000 đ/kết quả, cần khoảng 36.000 đ/ngày. Mỗi chiến dịch chạy 50.000 đ/ngày là vừa đủ.
 - **Số người trong vòng 20 km:** từ khoảng 40 nghìn (vùng núi) đến vài triệu (Hà Nội, TP.HCM). Con số thật là "Quy mô đối tượng ước tính" hiện ra sau khi thả ghim. Với ngân sách này, mỗi người hầu như không thấy quảng cáo quá nhiều lần, trừ khi quy mô đối tượng dưới 20 đến 30 nghìn người.
 - **Không cần cài giờ chạy:** để quảng cáo chạy cả ngày.
 - **Thời gian:** 7 ngày như đã chốt. Một tuần là đủ để biết video nào hút tương tác, nhưng chưa đủ để đánh giá chắc chắn. Tháng 12 và tháng 1 (gần Tết) giá hiển thị thường tăng.
@@ -344,7 +343,7 @@ Sau tuần chạy tương tác này, khi đã có khoảng **1.000 người tr�
 ## 8. Thông tin anh cần cung cấp
 1. ~~Địa chỉ~~ **Đã chốt:** Suối Sỏi, xã Cao Dương, tỉnh Phú Thọ (Lương Sơn cũ, Hòa Bình cũ). Dùng làm tâm vòng 20 km và ghi vào dòng bắt buộc. Lưu ý địa chỉ sẽ hiện công khai trên các bài.
 2. **[TÊN CHỦ CƠ SỞ / HỘ KINH DOANH]**: tên đã đăng ký, hoặc tên người chịu trách nhiệm.
-3. ~~Ngân sách~~ **Đã chốt:** 700.000 đ trọn đời, 7 ngày, chia 2 nhóm × 350.000 đ.
+3. ~~Ngân sách~~ **Đã chốt:** 2 chiến dịch × 50.000 đ/ngày × 7 ngày = 2 × 350.000 đ (tổng 700.000 đ, khoảng 770.000 đ có VAT).
 4. ~~Tài khoản quảng cáo~~ **Đã chốt:** tài khoản trong nick Hưng. Cần kiểm tra: đã có phương thức thanh toán, tiền tệ VND, múi giờ Việt Nam, nick Hưng đã có quyền Quảng cáo trên Trang Mế Nguyệt.
 5. ~~Ngày chạy~~ **Đã chốt:** 17/11/2026 00:02 đến 23/11/2026 23:59. Thanh toán bằng tiền nạp MoMo.
 6. **Tình trạng video:** đã gắn đủ 29 clip chưa, đã đăng bài nào, clip nào có nhạc (nhạc gì), có clip nào có hình bia rượu hoặc trận bóng không. Trang đã có video/Reel nào khác ngoài 29 bài này không? Nếu có thì đưa vào cùng nhóm.
