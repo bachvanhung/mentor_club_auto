@@ -1,0 +1,24 @@
+name: fb-ads-kiemtra
+
+# CHỈ ĐỌC: kiểm tra token, tài khoản quảng cáo, Trang Mế Nguyệt, danh sách Reel, toạ độ.
+# Không tạo / sửa / xoá gì trên Facebook.
+on:
+  push:
+    branches: [ccr-f90d537d-5vj4eg]
+    paths: ['.github/workflows/fb-ads-kiemtra.yml', 'scripts/fb-ads-kiemtra.js']
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Kiểm tra (chỉ đọc)
+        env:
+          FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          PAGE_HINT: 'nguyệt'
+        run: node scripts/fb-ads-kiemtra.js
