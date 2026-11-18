@@ -40,6 +40,17 @@ jobs:
           C_MENGUYET_TOKEN: ${{ secrets.MENGUYET_TOKEN }}
           C_TOKEN_FB: ${{ secrets.TOKEN_FB }}
           C_TOKEN_PAGE: ${{ secrets.TOKEN_PAGE }}
+          C_VAR_FB_USER_TOKEN: ${{ vars.FB_USER_TOKEN }}
+          C_VAR_FB_PAGE_TOKEN: ${{ vars.FB_PAGE_TOKEN }}
+          C_VAR_FB_TOKEN: ${{ vars.FB_TOKEN }}
+          C_VAR_FACEBOOK_TOKEN: ${{ vars.FACEBOOK_TOKEN }}
+          C_VAR_FB_ACCESS_TOKEN: ${{ vars.FB_ACCESS_TOKEN }}
+          C_VAR_FB_PAGE_ACCESS_TOKEN: ${{ vars.FB_PAGE_ACCESS_TOKEN }}
+          C_VAR_PAGE_TOKEN: ${{ vars.PAGE_TOKEN }}
+          C_VAR_PAGE_ACCESS_TOKEN: ${{ vars.PAGE_ACCESS_TOKEN }}
+          C_VAR_ACCESS_TOKEN: ${{ vars.ACCESS_TOKEN }}
+          C_VAR_META_TOKEN: ${{ vars.META_TOKEN }}
+          C_VAR_TOKEN: ${{ vars.TOKEN }}
           FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           PAGE_HINT: 'nguyệt'
