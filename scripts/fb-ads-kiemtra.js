@@ -48,8 +48,16 @@ async function inspectPage(id, tok) {
 }
 
 (async () => {
-  console.log(`Graph ${V}. Secret FB_USER_TOKEN: ${UT ? 'CÓ' : 'KHÔNG CÓ'} | FB_PAGE_TOKEN: ${PT ? 'CÓ' : 'KHÔNG CÓ'}`);
-  for (const [name, tok] of [['FB_USER_TOKEN', UT], ['FB_PAGE_TOKEN', PT]]) {
+  // Dò mọi secret ứng viên (biến môi trường C_<TÊN>) — chỉ in TÊN và có/không, không in giá trị.
+  const cands = Object.keys(process.env).filter(k => k.startsWith('C_')).sort();
+  const found = cands.filter(k => (process.env[k] || '').trim());
+  console.log(`Graph ${V}. Đã dò ${cands.length} tên secret. Có giá trị: ${found.length ? found.map(k => k.slice(2)).join(', ') : 'KHÔNG CÓ secret nào'}`);
+  const seen = new Set();
+  const toks = [];
+  for (const [name, tok] of [['FB_USER_TOKEN', UT], ['FB_PAGE_TOKEN', PT], ...found.map(k => [k.slice(2), (process.env[k] || '').trim()])]) {
+    if (tok && !seen.has(tok)) { seen.add(tok); mask(tok); toks.push([name, tok]); }
+  }
+  for (const [name, tok] of toks) {
     if (!tok) continue;
     console.log(`\n================ ${name} ================`);
     const me = await get('/me', tok, { fields: 'id,name' });

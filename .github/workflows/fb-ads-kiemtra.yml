@@ -18,6 +18,28 @@ jobs:
           node-version: 20
       - name: Kiểm tra (chỉ đọc)
         env:
+          C_FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
+          C_FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          C_FB_TOKEN: ${{ secrets.FB_TOKEN }}
+          C_FACEBOOK_TOKEN: ${{ secrets.FACEBOOK_TOKEN }}
+          C_FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
+          C_FB_PAGE_ACCESS_TOKEN: ${{ secrets.FB_PAGE_ACCESS_TOKEN }}
+          C_FB_USER_ACCESS_TOKEN: ${{ secrets.FB_USER_ACCESS_TOKEN }}
+          C_PAGE_TOKEN: ${{ secrets.PAGE_TOKEN }}
+          C_PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+          C_USER_TOKEN: ${{ secrets.USER_TOKEN }}
+          C_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          C_META_TOKEN: ${{ secrets.META_TOKEN }}
+          C_META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          C_FB_ADS_TOKEN: ${{ secrets.FB_ADS_TOKEN }}
+          C_ADS_TOKEN: ${{ secrets.ADS_TOKEN }}
+          C_TOKEN: ${{ secrets.TOKEN }}
+          C_FB_LONG_TOKEN: ${{ secrets.FB_LONG_TOKEN }}
+          C_FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
+          C_FB_PAGE_TOKEN_MENGUYET: ${{ secrets.FB_PAGE_TOKEN_MENGUYET }}
+          C_MENGUYET_TOKEN: ${{ secrets.MENGUYET_TOKEN }}
+          C_TOKEN_FB: ${{ secrets.TOKEN_FB }}
+          C_TOKEN_PAGE: ${{ secrets.TOKEN_PAGE }}
           FB_USER_TOKEN: ${{ secrets.FB_USER_TOKEN }}
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           PAGE_HINT: 'nguyệt'
